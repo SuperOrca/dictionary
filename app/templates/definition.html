@@ -27,6 +27,7 @@
     .example {
         color: #a6acb2;
     }
+
 </style>
 {% endblock %}
 
@@ -51,31 +52,31 @@
             <h5 class="card-title">
                 {{ item.word }}
                 {% if item.phonetics %}
-                    {% if item.phonetics.0.audio %}
-                        {% if item.phonetics.0.text %}
-                            ({{ item.phonetics.0.text }})
-                        {% endif %}
-                        <span class="audio-icon" onclick="playAudio('{{ item.phonetics.0.audio }}')">&#128266;</span>
-                    {% endif %}
+                {% if item.phonetics.0.audio %}
+                {% if item.phonetics.0.text %}
+                ({{ item.phonetics.0.text }})
+                {% endif %}
+                <span class="audio-icon" onclick="playAudio('{{ item.phonetics.0.audio }}')">&#128266;</span>
+                {% endif %}
                 {% endif %}
             </h5>
             {% for meaning in item.meanings %}
-                <h6 class="card-subtitle mb-2 text-muted">{{ meaning.partOfSpeech }}</h6>
-                <ul>
-                    {% for definition in meaning.definitions %}
-                        <li>
-                            <strong>{{ definition.partOfSpeech }}</strong>
-                            {{ definition.definition }}
-                            {% if definition.example %}
-                                <br>
-                                <em class="example">Example: {{ definition.example }}</em>
-                            {% endif %}
-                        </li>
-<!--                        {% if not loop.last %}-->
-<!--                            <br>-->
-<!--                        {% endif %}-->
-                    {% endfor %}
-                </ul>
+            <h6 class="card-subtitle mb-2 text-muted">{{ meaning.partOfSpeech }}</h6>
+            <ul>
+                {% for definition in meaning.definitions %}
+                <li>
+                    <strong>{{ definition.partOfSpeech }}</strong>
+                    {{ definition.definition }}
+                    {% if definition.example %}
+                    <br>
+                    <em class="example">Example: {{ definition.example }}</em>
+                    {% endif %}
+                </li>
+                <!--                        {% if not loop.last %}-->
+                <!--                            <br>-->
+                <!--                        {% endif %}-->
+                {% endfor %}
+            </ul>
             {% endfor %}
         </div>
     </div>
@@ -99,5 +100,6 @@
             audio.play();
         }
     }
+
 </script>
 {% endblock %}

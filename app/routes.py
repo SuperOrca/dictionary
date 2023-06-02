@@ -1,5 +1,5 @@
-from flask import render_template
 import aiohttp
+from flask import render_template
 
 from app import app
 

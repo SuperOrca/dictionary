@@ -1,7 +1,9 @@
 # dictionary
- An application that defines words.
+
+An application that defines words.
 
 ## Sources
+
 - [dictionaryapi](https://dictionaryapi.dev/)
 - [wikimedia](https://commons.wikimedia.org/wiki/Main_Page)
 - [wikimedia license](https://creativecommons.org/licenses/by/3.0/us)
