@@ -23,6 +23,10 @@
         font-size: 1.5rem;
         margin-right: 5px;
     }
+
+    .example {
+        color: #a6acb2;
+    }
 </style>
 {% endblock %}
 
@@ -62,7 +66,14 @@
                         <li>
                             <strong>{{ definition.partOfSpeech }}</strong>
                             {{ definition.definition }}
+                            {% if definition.example %}
+                                <br>
+                                <em class="example">Example: {{ definition.example }}</em>
+                            {% endif %}
                         </li>
+<!--                        {% if not loop.last %}-->
+<!--                            <br>-->
+<!--                        {% endif %}-->
                     {% endfor %}
                 </ul>
             {% endfor %}
