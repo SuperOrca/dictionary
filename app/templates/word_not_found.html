@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ word }}{% endblock %}
+{% block head %}
+<style>
+    .search-bar {
+        border-radius: 25px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<header class="py-3">
+    <div class="container d-flex align-items-center">
+        <a href="/" class="text-decoration-none"><h1 class="m-0 me-3 text-white">Dictionary</h1></a>
+        <form class="d-flex flex-grow-1">
+            <input class="form-control search-bar mx-5" type="search" placeholder="Type your word here..."
+                   value="{{ word }}" aria-label="Search" id="searchInput"
+                   onkeydown="search(event)">
+        </form>
+    </div>
+</header>
+
+{% if not word_found %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="text-center">
+        <h2 class="text-danger">Word not found.</h2>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function search(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        var word = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (word !== '') {
+            window.location.href = '/' + word;
+        }
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-lg-6">
+            <h1 class="display-2 text-center text-white mb-4">Dictionary</h1>
+            <div class="input-group mb-3">
+                <input type="search" class="form-control form-control-lg search-input"
+                       placeholder="Type your word here..." aria-label="Search" id="searchInput"
+                       onkeydown="search(event)">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function search(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        var word = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (word !== '') {
+            window.location.href = '/' + word;
+        }
+    }
+}
+
+</script>
+{% endblock %}
